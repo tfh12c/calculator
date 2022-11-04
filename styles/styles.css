@@ -69,4 +69,22 @@ body {
 
 .blue-mode-toggle {
   background-color: hsl(6deg, 63%, 50%);
+}
+
+.display {
+  width: 100%;
+  margin-top: 2rem;
+}
+.display__container {
+  background-color: hsl(224deg, 36%, 15%);
+  height: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-radius: 10px;
+}
+.display__total {
+  font-size: 2rem;
+  margin-right: 1rem;
+  color: hsl(0deg, 0%, 100%);
 }/*# sourceMappingURL=styles.css.map */

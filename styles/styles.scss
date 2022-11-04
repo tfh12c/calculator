@@ -72,3 +72,23 @@ body {
 .blue-mode-toggle {
     background-color: variables.$color-blue-redkey-background;
 }
+
+.display {
+    width: 100%;
+    margin-top: 2rem;
+
+    &__container {
+        background-color: variables.$color-blue-display-background;
+        height: 5rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        border-radius: 10px;
+    }
+
+    &__total {
+        font-size: 2rem;
+        margin-right: 1rem;
+        color: variables.$color-blue-text-white;
+    }
+}
