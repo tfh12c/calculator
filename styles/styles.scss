@@ -1,3 +1,13 @@
 @use './_partials/typography' as *;
 @use './_partials/mixins';
 @use './_partials/variables';
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'League Spartan', sans-serif;
+    font-weight: bold;
+}

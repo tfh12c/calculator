@@ -37,5 +37,3 @@ const operate = (operator, num1, num2) => {
             return null
     }
 }
-
-console.log(operate('/', 5, 2.333));
