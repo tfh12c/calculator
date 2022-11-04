@@ -33,18 +33,40 @@ body {
   display: flex;
 }
 .header__theme-container-title {
-  font-size: 12px;
+  font-size: 0.75rem;
   letter-spacing: 1px;
   color: hsl(0deg, 0%, 100%);
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
   margin-bottom: 0;
   margin-right: 1rem;
 }
 .header__theme-label-container {
   display: flex;
   justify-content: space-around;
+  margin-bottom: 3px;
 }
-.header__theme-input-container {
+.header__theme-label {
+  margin: 0;
+  color: hsl(0deg, 0%, 100%);
+  font-size: 0.75rem;
+}
+.header__theme-button-container {
   background-color: hsl(223deg, 31%, 20%);
-  margin-top: 0.3125rem;
+  height: 1.25rem;
+  width: 3.75rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 10px;
+}
+.header__theme-button {
+  background-color: hsl(223deg, 31%, 20%);
+  height: 0.75rem;
+  width: 0.625rem;
+  border-radius: 50%;
+  border: none;
+}
+
+.blue-mode-toggle {
+  background-color: hsl(6deg, 63%, 50%);
 }/*# sourceMappingURL=styles.css.map */
