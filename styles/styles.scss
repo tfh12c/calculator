@@ -19,8 +19,9 @@
     --color-accent-key-background: hsl(6, 63%, 50%);
     --color-accent-key-shadow: hsl(6, 70%, 34%);
     //Text
-    --color-text-light: hsl(0, 0%, 100%);
-    --color-text-dark: hsl(221, 14%, 31%);
+    --color-text-body: hsl(0, 0%, 100%);
+    --color-text-primary-key: hsl(221, 14%, 31%);
+    --color-text-secondary-key: hsl(0, 0%, 100%);
 }
 
 .lightmode {
@@ -36,8 +37,9 @@
     --color-accent-key-background: hsl(25, 98%, 40%);
     --color-accent-key-shadow: hsl(25, 99%, 27%);
     //Text
-    --color-text-light: hsl(0, 0%, 100%);
-    --color-text-dark: hsl(60, 10%, 19%);
+    --color-text-body: hsl(60, 10%, 19%);
+    --color-text-primary-key: hsl(60, 10%, 19%);
+    --color-text-secondary-key: hsl(0, 0%, 100%);
 }
 
 .purplemode {
@@ -53,8 +55,9 @@
     --color-accent-key-background: hsl(176, 100%, 44%);
     --color-accent-key-shadow: hsl(177, 92%, 70%);
     //Text
-    --color-text-light: hsl(0, 0%, 100%);
-    --color-text-dark: hsl(60, 10%, 19%);
+    --color-text-body: hsl(52, 100%, 62%);
+    --color-text-primary-key: hsl(52, 100%, 62%);
+    --color-text-secondary-key: hsl(0, 0%, 100%);
 }
 
 body {
@@ -73,7 +76,7 @@ body {
     &__title {
         margin: 0;
         font-size: 2rem;
-        color: var(--color-text-light);
+        color: var(--color-text-body);
     }
 
     &__theme-container {
@@ -83,7 +86,7 @@ body {
     &__theme-container-title {
         font-size: .75rem;
         letter-spacing: 1px;
-        color: var(--color-text-light);
+        color: var(--color-text-body);
         margin-top: 1.25rem;
         margin-bottom: 0;
         margin-right: 1rem;
@@ -97,7 +100,7 @@ body {
 
     &__theme-label {
         margin: 0;
-        color: var(--color-text-light);
+        color: var(--color-text-body);
         font-size: .75rem;
     }
 
@@ -120,7 +123,8 @@ body {
     }
 }
 
-.blue-mode-toggle {
+//sets background color for active theme toggle
+.active {
     background-color: var(--color-accent-key-background);
 }
 
@@ -139,7 +143,7 @@ body {
     &__total {
         font-size: 2rem;
         margin-right: 1rem;
-        color: var(--color-text-light);
+        color: var(--color-text-body);
     }
 }
 
@@ -156,7 +160,7 @@ body {
     }
 
     &__item {
-        color: var(--color-text-dark);
+        color: var(--color-text-primary-key);
         background-color: var(--color-primary-key-background);
         font-size: 2rem;
         display: flex;
@@ -169,7 +173,7 @@ body {
 
     &__delete {
         font-size: 18px;
-        color: var(--color-text-light);
+        color: var(--color-text-secondary-key);
         background-color: var(--color-secondary-key-background);
         filter: drop-shadow(0px 3px var(--color-secondary-key-shadow));
     }
@@ -177,14 +181,14 @@ body {
     &__reset {
         grid-column: span 2;
         font-size: 18px; 
-        color: var(--color-text-light);
+        color: var(--color-text-secondary-key);
         background-color: var(--color-secondary-key-background);
         filter: drop-shadow(0px 3px var(--color-secondary-key-shadow));
     }
 
     &__equals {
         grid-column: span 2;
-        color: var(--color-text-light);
+        color: var(--color-text-secondary-key);
         background-color: var(--color-accent-key-background);
         filter: drop-shadow(0px 3px var(--color-accent-key-shadow));
     }
