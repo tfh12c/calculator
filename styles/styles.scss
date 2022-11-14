@@ -159,7 +159,8 @@ body {
         border-radius: 10px;
     }
 
-    &__item {
+    &__key {
+        border: none;
         color: var(--color-text-primary-key);
         background-color: var(--color-primary-key-background);
         font-size: 2rem;

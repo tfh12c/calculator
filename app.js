@@ -1,3 +1,4 @@
+// JS for Themes
 const blueModeToggle = document.querySelector('#blue-mode-toggle');
 const lightModeToggle = document.querySelector('#light-mode-toggle');
 const purpleModeToggle = document.querySelector('#purple-mode-toggle');
@@ -30,6 +31,44 @@ purpleModeToggle.addEventListener('click', () => {
     blueModeToggle.classList.remove('active');
     lightModeToggle.classList.remove('active');
     equalKey.style.color = 'hsl(198, 20%, 13%)';
+})
+// -------------------------------------------------------------
+
+const calculator = document.querySelector('.calculator');
+const keys = document.querySelector('.calculator__container');
+const display = document.querySelector('.display__total');
+
+//Can use event delegation/bubbling to target all buttons/'keys' since they are all children of calc container
+keys.addEventListener('click', (e) => {
+    if (e.target.matches('button')) {
+        const key = e.target;
+        const action = key.dataset.action;
+        const keyContent = key.textContent;
+        const displayedNum = display.textContent;
+        
+        if (!action) {
+            if (displayedNum === '0') {
+                display.textContent = keyContent;
+            } else {
+                display.textContent = displayedNum + keyContent;
+            }
+        }
+        if (action === 'add' || action === 'subtract' || action === 'multiple' || action === 'divide') {
+            key.classList.add('is-depressed');
+        }
+        if (action === 'decimal') {
+            display.textContent = displayedNum + '.';
+        }
+        if (action === 'delete') {
+            console.log('delete key');
+        }
+        if (action === 'clear') {
+            console.log('clear key');
+        }
+        if (action === 'calculate') {
+            console.log('calculate key');
+        }
+    }
 })
 
 const add = (num1, num2) => {
