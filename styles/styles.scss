@@ -135,12 +135,20 @@ body {
         background-color: var(--color-display-background);
         height: 5rem;
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-end;
         border-radius: 10px;
     }
 
-    &__total {
+    &__history {
+        font-size: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 1rem;
+        color: var(--color-text-body);
+    }
+
+    &__input {
         font-size: 2rem;
         margin-right: 1rem;
         color: var(--color-text-body);

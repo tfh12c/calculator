@@ -34,42 +34,62 @@ purpleModeToggle.addEventListener('click', () => {
 })
 // -------------------------------------------------------------
 
-const calculator = document.querySelector('.calculator');
-const keys = document.querySelector('.calculator__container');
-const display = document.querySelector('.display__total');
+// Variables for HTML elements
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const input = document.querySelector('.display__input');
+const equals = document.querySelector('.equals');
 
-//Can use event delegation/bubbling to target all buttons/'keys' since they are all children of calc container
-keys.addEventListener('click', (e) => {
-    if (e.target.matches('button')) {
-        const key = e.target;
-        const action = key.dataset.action;
-        const keyContent = key.textContent;
-        const displayedNum = display.textContent;
-        
-        if (!action) {
-            if (displayedNum === '0') {
-                display.textContent = keyContent;
-            } else {
-                display.textContent = displayedNum + keyContent;
-            }
-        }
-        if (action === 'add' || action === 'subtract' || action === 'multiple' || action === 'divide') {
-            key.classList.add('is-depressed');
-        }
-        if (action === 'decimal') {
-            display.textContent = displayedNum + '.';
-        }
-        if (action === 'delete') {
-            console.log('delete key');
-        }
-        if (action === 'clear') {
-            console.log('clear key');
-        }
-        if (action === 'calculate') {
-            console.log('calculate key');
-        }
+// Variables to store needed data.
+let num1 = '';
+let num2 = '';
+let operator = '';
+let displayingOperator = false; // Boolean to tell if numbers go to num1 or num2
+
+
+numbers.forEach(number => number.addEventListener('click', displayNumber));
+operators.forEach(operator => operator.addEventListener('click', displayOperator));
+equals.addEventListener('click', evaluate);
+
+function evaluate() {
+    if (!num1 || !operator || !num2) {
+        return;
+    } else {
+        operate(operator, num1, num2);
+        num1 = operate(operator, num1, num2);
+        input.innerHTML = num1;
+        num2 = '';
+        displayingOperator = false;
     }
-})
+    // operate(operator, num1, num2);
+    // console.log(operate(operator, num1, num2));
+}
+
+function displayNumber(event) {
+    const clickedNumber = event.target.textContent;
+    if (!displayingOperator) {
+        input.innerHTML += clickedNumber;
+        num1 += clickedNumber;
+        console.log(num1);
+    }
+    if (displayingOperator) {
+        num2 += clickedNumber
+        console.log(num2);
+        input.innerHTML = `${num1} ${operator} ${num2}`;
+    }
+}
+
+function displayOperator(event) {
+    const clickedOperator = event.target.textContent;
+    if (!num1) {
+        input.innerHTML = 'Please enter a number';
+    }
+    if (num1) {
+        input.innerHTML = `${num1} ${clickedOperator}`;
+        operator = clickedOperator;
+        displayingOperator = true;
+    }
+}
 
 const add = (num1, num2) => {
     const sum = (num1 + num2);
@@ -95,14 +115,14 @@ const divide = (num1, num2) => {
 }
 
 const operate = (operator, num1, num2) => {
-    // num1 = Number(num1);
-    // num2 = Number(num2);
+    num1 = Number(num1);
+    num2 = Number(num2);
     switch (operator) {
         case '+':
             return add(num1, num2);
         case '-':
             return subtract(num1, num2);
-        case '*':
+        case 'x':
             return multiply(num1, num2);
         case '/':
             return divide(num1, num2);
