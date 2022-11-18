@@ -52,29 +52,30 @@ operators.forEach(operator => operator.addEventListener('click', displayOperator
 equals.addEventListener('click', evaluate);
 
 function evaluate() {
+    //If there is no num1, operator, or num2, early return
     if (!num1 || !operator || !num2) {
         return;
     } else {
+        //Run operate function, assign total to num1 for successive calculations, append to display
+        //set num2 to null for future secondary operands, update displayingOperator to false
         operate(operator, num1, num2);
         num1 = operate(operator, num1, num2);
         input.innerHTML = num1;
         num2 = '';
         displayingOperator = false;
     }
-    // operate(operator, num1, num2);
-    // console.log(operate(operator, num1, num2));
 }
 
 function displayNumber(event) {
     const clickedNumber = event.target.textContent;
+    //If no operator, clicks add numbers to variable num1
     if (!displayingOperator) {
         input.innerHTML += clickedNumber;
         num1 += clickedNumber;
-        console.log(num1);
     }
+    //If operator is present, clicks add numbers to variable num2
     if (displayingOperator) {
         num2 += clickedNumber
-        console.log(num2);
         input.innerHTML = `${num1} ${operator} ${num2}`;
     }
 }
