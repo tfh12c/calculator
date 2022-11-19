@@ -39,6 +39,8 @@ const numbers = document.querySelectorAll('.number');
 const operators = document.querySelectorAll('.operator');
 const input = document.querySelector('.display__input');
 const equals = document.querySelector('.equals');
+const clear = document.querySelector('.reset');
+const backspace = document.querySelector('.delete');
 
 // Variables to store needed data.
 let num1 = '';
@@ -46,10 +48,34 @@ let num2 = '';
 let operator = '';
 let displayingOperator = false; // Boolean to tell if numbers go to num1 or num2
 
-
+//Event listeners for buttons
 numbers.forEach(number => number.addEventListener('click', displayNumber));
 operators.forEach(operator => operator.addEventListener('click', displayOperator));
 equals.addEventListener('click', evaluate);
+clear.addEventListener('click', clearDisplay);
+backspace.addEventListener('click', clickBackspace);
+
+function clickBackspace() {
+    //if num1 exist, operator and num2 dont, clear num 1
+    if (num1 && !operator && !num2) {
+        num1 = num1.slice(0, -1);
+        input.innerHTML = `${num1}`;
+    }
+    //if num1 and operator exist, and num2 doesnt, clear operator, keep num1
+    if (num1 && operator &&!num2) {
+        operator = '';
+        input.innerHTML = `${num1}`;
+    }
+    //if num1, operator, num2 exist, clear num2 keep num1, operator
+}
+
+function clearDisplay() {
+    input.innerHTML = '';
+    num1 = '';
+    num2 = '';
+    operator = '';
+    displayingOperator = false;
+}
 
 function evaluate() {
     //If there is no num1, operator, or num2, early return
@@ -82,9 +108,12 @@ function displayNumber(event) {
 
 function displayOperator(event) {
     const clickedOperator = event.target.textContent;
+    //If user clicks operator with no num1, early return
     if (!num1) {
-        input.innerHTML = 'Please enter a number';
+        return;
     }
+    //If num1 exists, append operator to display with num1, update 
+    //displayingOperator to true
     if (num1) {
         input.innerHTML = `${num1} ${clickedOperator}`;
         operator = clickedOperator;
@@ -109,7 +138,7 @@ const multiply = (num1, num2) => {
 
 const divide = (num1, num2) => {
     if (num2 === 0) {
-        return 'ERROR';
+        return "ERROR";
     }
     const sum = (num1 / num2);
     return (Math.round((sum + Number.EPSILON) * 100) / 100);
